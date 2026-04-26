@@ -1,0 +1,15 @@
+{
+	"name": "dataAgro",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Enabled",
+			"editable": true
+		}
+	},
+	"location": "swedencentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "01a88603-d53d-4e54-bdd5-a08e8242a17d",
+		"tenantId": "991b9c32-025e-40d0-9365-110564929e6f"
+	}
+}
