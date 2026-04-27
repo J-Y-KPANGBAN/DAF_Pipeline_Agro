@@ -1,0 +1,188 @@
+{
+	"name": "AzureSqlTableoutput",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "data_output_agro"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "lot_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "site_code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "site_ville",
+				"type": "nvarchar"
+			},
+			{
+				"name": "site_departement",
+				"type": "nvarchar"
+			},
+			{
+				"name": "site_region",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ligne_production",
+				"type": "nvarchar"
+			},
+			{
+				"name": "poste",
+				"type": "nvarchar"
+			},
+			{
+				"name": "operateur_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "date_abattage",
+				"type": "date"
+			},
+			{
+				"name": "datetime_abattage",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "datetime_livraison",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "duree_abattage_min",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "semaine",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "mois",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "annee",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "trimestre",
+				"type": "nvarchar"
+			},
+			{
+				"name": "espece",
+				"type": "nvarchar"
+			},
+			{
+				"name": "race",
+				"type": "nvarchar"
+			},
+			{
+				"name": "age_elevage_jours",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "certification",
+				"type": "nvarchar"
+			},
+			{
+				"name": "volume_abattu_tetes",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "poids_vif_kg",
+				"type": "decimal",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "poids_carcasse_kg",
+				"type": "decimal",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "poids_perte_kg",
+				"type": "decimal",
+				"precision": 6,
+				"scale": 3
+			},
+			{
+				"name": "rendement_carcasse_pct",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 2
+			},
+			{
+				"name": "taux_pertes_pct",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 2
+			},
+			{
+				"name": "temperature_ressuage_c",
+				"type": "decimal",
+				"precision": 4,
+				"scale": 2
+			},
+			{
+				"name": "temperature_stockage_c",
+				"type": "decimal",
+				"precision": 4,
+				"scale": 2
+			},
+			{
+				"name": "pH_mesure",
+				"type": "decimal",
+				"precision": 4,
+				"scale": 2
+			},
+			{
+				"name": "conforme_haccp",
+				"type": "bit"
+			},
+			{
+				"name": "anomalie_detectee",
+				"type": "nvarchar"
+			},
+			{
+				"name": "score_qualite",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 2
+			},
+			{
+				"name": "destination_marche",
+				"type": "nvarchar"
+			},
+			{
+				"name": "transporteur",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ca_estime_eur",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "abattage_lots"
+		}
+	}
+}

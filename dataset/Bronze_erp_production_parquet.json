@@ -1,0 +1,156 @@
+{
+	"name": "Bronze_erp_production_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageIntput",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "data_Input_agro_v2"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "erp_production.parquet",
+				"container": "dataagro"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "sap_lot_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "sap_ordre_fabrication",
+				"type": "UTF8"
+			},
+			{
+				"name": "site_sap_code",
+				"type": "UTF8"
+			},
+			{
+				"name": "site_ville",
+				"type": "UTF8"
+			},
+			{
+				"name": "site_departement",
+				"type": "UTF8"
+			},
+			{
+				"name": "site_region",
+				"type": "UTF8"
+			},
+			{
+				"name": "site_type",
+				"type": "UTF8"
+			},
+			{
+				"name": "ligne_production",
+				"type": "UTF8"
+			},
+			{
+				"name": "poste_travail",
+				"type": "UTF8"
+			},
+			{
+				"name": "operateur_matricule",
+				"type": "UTF8"
+			},
+			{
+				"name": "date_fabrication",
+				"type": "UTF8"
+			},
+			{
+				"name": "heure_debut",
+				"type": "UTF8"
+			},
+			{
+				"name": "heure_fin",
+				"type": "UTF8"
+			},
+			{
+				"name": "semaine_sap",
+				"type": "INT64"
+			},
+			{
+				"name": "periode_sap",
+				"type": "UTF8"
+			},
+			{
+				"name": "espece",
+				"type": "UTF8"
+			},
+			{
+				"name": "race_elevage",
+				"type": "UTF8"
+			},
+			{
+				"name": "age_abattage_jours",
+				"type": "INT64"
+			},
+			{
+				"name": "certification",
+				"type": "UTF8"
+			},
+			{
+				"name": "num_elevage",
+				"type": "UTF8"
+			},
+			{
+				"name": "departement_elevage",
+				"type": "UTF8"
+			},
+			{
+				"name": "volume_abattu_tetes",
+				"type": "INT64"
+			},
+			{
+				"name": "poids_vif_moyen_kg",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "poids_carcasse_kg",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "poids_abats_kg",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "poids_pertes_kg",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "rendement_carcasse_pct",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "taux_pertes_pct",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "temperature_ressuage_c",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "temperature_stockage_c",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "ph_viande",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "conforme_haccp",
+				"type": "BOOLEAN"
+			},
+			{
+				"name": "statut_sap",
+				"type": "UTF8"
+			}
+		]
+	}
+}

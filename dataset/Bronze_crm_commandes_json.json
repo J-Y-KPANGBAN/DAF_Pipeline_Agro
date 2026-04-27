@@ -1,0 +1,92 @@
+{
+	"name": "Bronze_crm_commandes_json",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageIntput",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "data_Input_agro_v2"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "crm_commandes.json",
+				"container": "dataagro"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"commande_id": {
+					"type": "string"
+				},
+				"client_id": {
+					"type": "string"
+				},
+				"site_expedition": {
+					"type": "string"
+				},
+				"ville_expedition": {
+					"type": "string"
+				},
+				"region_expedition": {
+					"type": "string"
+				},
+				"produit_espece": {
+					"type": "string"
+				},
+				"reference_produit": {
+					"type": "string"
+				},
+				"quantite_kg": {
+					"type": "integer"
+				},
+				"prix_unitaire_eur_kg": {
+					"type": "number"
+				},
+				"montant_ht_eur": {
+					"type": "number"
+				},
+				"tva_pct": {
+					"type": "number"
+				},
+				"montant_ttc_eur": {
+					"type": "number"
+				},
+				"date_commande": {
+					"type": "string"
+				},
+				"date_livraison_prev": {
+					"type": "string"
+				},
+				"date_livraison_reelle": {
+					"type": "string"
+				},
+				"statut_commande": {
+					"type": "string"
+				},
+				"transporteur": {
+					"type": "string"
+				},
+				"numero_bl": {
+					"type": "string"
+				},
+				"temperature_transport_c": {
+					"type": "number"
+				},
+				"destination_pays": {
+					"type": "string"
+				},
+				"certification_produit": {
+					"type": "string"
+				},
+				"commentaire": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}

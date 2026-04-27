@@ -1,0 +1,31 @@
+{
+	"name": "Bronze_erp_stocks_logistique_txt",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageIntput",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "data_Input_agro_v2"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "erp_stocks_logistique.txt",
+				"container": "dataagro"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": ""
+		},
+		"schema": [
+			{
+				"name": "wms_mouvement_id|site_code_wms|site_ville|site_region|entrepot_zone|reference_produit|libelle_produit|espece_principale|type_conservation|type_mouvement|sens|quantite_uc|poids_net_kg|poids_brut_kg|unite_conditionnement|type_palette|nb_palettes|temperature_zone_c|dlc_date|dluo_date|numero_lot_wms|sap_lot_reference|date_mouvement|heure_mouvement|operateur_wms|valeur_stock_eur|statut_controle_qualite|observations",
+				"type": "String"
+			}
+		]
+	}
+}

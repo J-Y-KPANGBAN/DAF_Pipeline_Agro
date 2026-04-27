@@ -1,0 +1,32 @@
+{
+	"name": "Bronze_crm_clients_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageIntput",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "data_Input_agro_v2"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "crm_clients.csv",
+				"container": "dataagro"
+			},
+			"columnDelimiter": ";",
+			"rowDelimiter": "\n",
+			"escapeChar": "",
+			"firstRowAsHeader": true,
+			"quoteChar": ""
+		},
+		"schema": [
+			{
+				"name": "client_id;raison_sociale;segment;pays;region_livraison;site_rattachement;ville_rattachement;contact_nom;contact_email;telephone;date_creation_compte;statut_compte;ca_annuel_eur;conditions_paiement;canal_commande;certif_exigee;nb_commandes_12m;derniere_commande;score_fidelite;commercial_ref",
+				"type": "String"
+			}
+		]
+	}
+}
