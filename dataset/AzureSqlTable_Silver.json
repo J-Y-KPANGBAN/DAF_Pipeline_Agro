@@ -5,6 +5,16 @@
 			"referenceName": "AzureSqlDatabase1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"schema_name": {
+				"type": "string",
+				"defaultValue": "silver"
+			},
+			"table_name": {
+				"type": "string",
+				"defaultValue": "crm_clients"
+			}
+		},
 		"folder": {
 			"name": "data_output_agro_v2"
 		},
@@ -12,8 +22,14 @@
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "Silver",
-			"table": "crm_clients"
+			"schema": {
+				"value": "@dataset().schema_name",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().table_name",
+				"type": "Expression"
+			}
 		}
 	}
 }

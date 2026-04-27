@@ -53,11 +53,7 @@
 						"referenceName": "AzureSqlTable_Silver",
 						"type": "DatasetReference"
 					},
-					"name": "sink2",
-					"rejectedDataLinkedService": {
-						"referenceName": "AzureBlobStorageIntput",
-						"type": "LinkedServiceReference"
-					}
+					"name": "sink2"
 				},
 				{
 					"dataset": {
@@ -227,7 +223,31 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink2",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          commande_id,",
+				"          client_id,",
+				"          site_expedition,",
+				"          ville_expedition,",
+				"          region_expedition,",
+				"          produit_espece,",
+				"          reference_produit,",
+				"          quantite_kg,",
+				"          prix_unitaire_eur_kg,",
+				"          montant_ht_eur,",
+				"          tva_pct,",
+				"          montant_ttc_eur,",
+				"          date_commande,",
+				"          date_livraison_prev,",
+				"          date_livraison_reelle,",
+				"          statut_commande,",
+				"          transporteur,",
+				"          numero_bl,",
+				"          temperature_transport_c,",
+				"          destination_pays,",
+				"          certification_produit,",
+				"          commentaire",
+				"     )) ~> sink2",
 				"SilverStocksLogistique sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",

@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Copy dataset client to database",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -16,11 +16,11 @@
 				"userProperties": [
 					{
 						"name": "Source",
-						"value": "inputdataldc//ldc_poultry_production.csv"
+						"value": "dataagro//crm_clients.csv"
 					},
 					{
 						"name": "Destination",
-						"value": "dbo.abattage_lots"
+						"value": "Silver"
 					}
 				],
 				"typeProperties": {
@@ -37,19 +37,260 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"writeBehavior": "upsert",
-						"upsertSettings": {
-							"useTempDB": true,
-							"keys": [
-								"lot_id"
-							]
-						},
-						"sqlWriterUseTableLock": false,
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": true,
+						"tableOption": "autoCreate",
 						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "client_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "client_id",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "raison_sociale",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "raison_sociale",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "segment",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "segment",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "pays",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "pays",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "region_livraison",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "region_livraison",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "site_rattachement",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "site_rattachement",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ville_rattachement",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ville_rattachement",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "contact_nom",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "contact_nom",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "contact_email",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "contact_email",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "telephone",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "telephone",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "date_creation_compte",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "date_creation_compte",
+									"type": "Date",
+									"physicalType": "date"
+								}
+							},
+							{
+								"source": {
+									"name": "statut_compte",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "statut_compte",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ca_annuel_eur",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ca_annuel_eur",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 15
+								}
+							},
+							{
+								"source": {
+									"name": "conditions_paiement",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "conditions_paiement",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "canal_commande",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "canal_commande",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "certif_exigee",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "certif_exigee",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_commandes_12m",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "nb_commandes_12m",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "derniere_commande",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "derniere_commande",
+									"type": "Date",
+									"physicalType": "date"
+								}
+							},
+							{
+								"source": {
+									"name": "score_fidelite",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "score_fidelite",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 1,
+									"precision": 5
+								}
+							},
+							{
+								"source": {
+									"name": "commercial_ref",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "commercial_ref",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
@@ -59,14 +300,1129 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "intputdata",
+						"referenceName": "Bronze_crm_clients_csv",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSqlTableoutput",
+						"referenceName": "AzureSqlTable_Silver",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema_name": "silver",
+							"table_name": "crm_clients"
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy dataset production to database",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dataagro//erp_production.parquet"
+					},
+					{
+						"name": "Destination",
+						"value": "Silver"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "ParquetSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "ParquetReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": true,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "sap_lot_id",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "sap_lot_id",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "sap_ordre_fabrication",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "sap_ordre_fabrication",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "site_sap_code",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "site_sap_code",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "site_ville",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "site_ville",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "site_departement",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "site_departement",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "site_region",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "site_region",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "site_type",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "site_type",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ligne_production",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "ligne_production",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "poste_travail",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "poste_travail",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "operateur_matricule",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "operateur_matricule",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "date_fabrication",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "date_fabrication",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "heure_debut",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "heure_debut",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "heure_fin",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "heure_fin",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "semaine_sap",
+									"type": "Int64",
+									"physicalType": "INT64"
+								},
+								"sink": {
+									"name": "semaine_sap",
+									"type": "Int64",
+									"physicalType": "bigint"
+								}
+							},
+							{
+								"source": {
+									"name": "periode_sap",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "periode_sap",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "espece",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "espece",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "race_elevage",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "race_elevage",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "age_abattage_jours",
+									"type": "Int64",
+									"physicalType": "INT64"
+								},
+								"sink": {
+									"name": "age_abattage_jours",
+									"type": "Int64",
+									"physicalType": "bigint"
+								}
+							},
+							{
+								"source": {
+									"name": "certification",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "certification",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "num_elevage",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "num_elevage",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "departement_elevage",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "departement_elevage",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "volume_abattu_tetes",
+									"type": "Int64",
+									"physicalType": "INT64"
+								},
+								"sink": {
+									"name": "volume_abattu_tetes",
+									"type": "Int64",
+									"physicalType": "bigint"
+								}
+							},
+							{
+								"source": {
+									"name": "poids_vif_moyen_kg",
+									"type": "Double",
+									"physicalType": "DOUBLE"
+								},
+								"sink": {
+									"name": "poids_vif_moyen_kg",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "poids_carcasse_kg",
+									"type": "Double",
+									"physicalType": "DOUBLE"
+								},
+								"sink": {
+									"name": "poids_carcasse_kg",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "poids_abats_kg",
+									"type": "Double",
+									"physicalType": "DOUBLE"
+								},
+								"sink": {
+									"name": "poids_abats_kg",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "poids_pertes_kg",
+									"type": "Double",
+									"physicalType": "DOUBLE"
+								},
+								"sink": {
+									"name": "poids_pertes_kg",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "rendement_carcasse_pct",
+									"type": "Double",
+									"physicalType": "DOUBLE"
+								},
+								"sink": {
+									"name": "rendement_carcasse_pct",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "taux_pertes_pct",
+									"type": "Double",
+									"physicalType": "DOUBLE"
+								},
+								"sink": {
+									"name": "taux_pertes_pct",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "temperature_ressuage_c",
+									"type": "Double",
+									"physicalType": "DOUBLE"
+								},
+								"sink": {
+									"name": "temperature_ressuage_c",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "temperature_stockage_c",
+									"type": "Double",
+									"physicalType": "DOUBLE"
+								},
+								"sink": {
+									"name": "temperature_stockage_c",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "ph_viande",
+									"type": "Double",
+									"physicalType": "DOUBLE"
+								},
+								"sink": {
+									"name": "ph_viande",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "conforme_haccp",
+									"type": "Boolean",
+									"physicalType": "BOOLEAN"
+								},
+								"sink": {
+									"name": "conforme_haccp",
+									"type": "Boolean",
+									"physicalType": "bit"
+								}
+							},
+							{
+								"source": {
+									"name": "statut_sap",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "statut_sap",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Bronze_erp_production_parquet",
 						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlTable_Silver",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema_name": "silver",
+							"table_name": "erp_production"
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy dataset ccommandes to database",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dataagro//crm_commandes.json"
+					},
+					{
+						"name": "Destination",
+						"value": "Silver"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": true,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['commande_id']"
+								},
+								"sink": {
+									"name": "commande_id"
+								}
+							},
+							{
+								"source": {
+									"path": "$['client_id']"
+								},
+								"sink": {
+									"name": "client_id"
+								}
+							},
+							{
+								"source": {
+									"path": "$['site_expedition']"
+								},
+								"sink": {
+									"name": "site_expedition"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ville_expedition']"
+								},
+								"sink": {
+									"name": "ville_expedition"
+								}
+							},
+							{
+								"source": {
+									"path": "$['region_expedition']"
+								},
+								"sink": {
+									"name": "region_expedition"
+								}
+							},
+							{
+								"source": {
+									"path": "$['produit_espece']"
+								},
+								"sink": {
+									"name": "produit_espece"
+								}
+							},
+							{
+								"source": {
+									"path": "$['reference_produit']"
+								},
+								"sink": {
+									"name": "reference_produit"
+								}
+							},
+							{
+								"source": {
+									"path": "$['quantite_kg']"
+								},
+								"sink": {
+									"name": "quantite_kg"
+								}
+							},
+							{
+								"source": {
+									"path": "$['prix_unitaire_eur_kg']"
+								},
+								"sink": {
+									"name": "prix_unitaire_eur_kg"
+								}
+							},
+							{
+								"source": {
+									"path": "$['montant_ht_eur']"
+								},
+								"sink": {
+									"name": "montant_ht_eur"
+								}
+							},
+							{
+								"source": {
+									"path": "$['tva_pct']"
+								},
+								"sink": {
+									"name": "tva_pct"
+								}
+							},
+							{
+								"source": {
+									"path": "$['montant_ttc_eur']"
+								},
+								"sink": {
+									"name": "montant_ttc_eur"
+								}
+							},
+							{
+								"source": {
+									"path": "$['date_commande']"
+								},
+								"sink": {
+									"name": "date_commande"
+								}
+							},
+							{
+								"source": {
+									"path": "$['date_livraison_prev']"
+								},
+								"sink": {
+									"name": "date_livraison_prev"
+								}
+							},
+							{
+								"source": {
+									"path": "$['date_livraison_reelle']"
+								},
+								"sink": {
+									"name": "date_livraison_reelle"
+								}
+							},
+							{
+								"source": {
+									"path": "$['statut_commande']"
+								},
+								"sink": {
+									"name": "statut_commande"
+								}
+							},
+							{
+								"source": {
+									"path": "$['transporteur']"
+								},
+								"sink": {
+									"name": "transporteur"
+								}
+							},
+							{
+								"source": {
+									"path": "$['numero_bl']"
+								},
+								"sink": {
+									"name": "numero_bl"
+								}
+							},
+							{
+								"source": {
+									"path": "$['temperature_transport_c']"
+								},
+								"sink": {
+									"name": "temperature_transport_c"
+								}
+							},
+							{
+								"source": {
+									"path": "$['destination_pays']"
+								},
+								"sink": {
+									"name": "destination_pays"
+								}
+							},
+							{
+								"source": {
+									"path": "$['certification_produit']"
+								},
+								"sink": {
+									"name": "certification_produit"
+								}
+							},
+							{
+								"source": {
+									"path": "$['commentaire']"
+								},
+								"sink": {
+									"name": "commentaire"
+								}
+							}
+						],
+						"mapComplexValuesToString": true
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Bronze_crm_commandes_json",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlTable_Silver",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema_name": "silver",
+							"table_name": "crm_commandes"
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy dataset stock logistique to database",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dataagro//erp_stocks_logistique.txt"
+					},
+					{
+						"name": "Destination",
+						"value": "Silver"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": true,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "wms_mouvement_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "wms_mouvement_id",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "site_code_wms",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "site_code_wms",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "site_ville",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "site_ville",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "site_region",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "site_region",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "entrepot_zone",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "entrepot_zone",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "reference_produit",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "reference_produit",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "libelle_produit",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "libelle_produit",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "espece_principale",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "espece_principale",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "type_conservation",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "type_conservation",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "type_mouvement",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "type_mouvement",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "sens",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "sens",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "quantite_uc",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "quantite_uc",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "poids_net_kg",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "poids_net_kg",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "poids_brut_kg",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "poids_brut_kg",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "unite_conditionnement",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "unite_conditionnement",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "type_palette",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "type_palette",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_palettes",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "nb_palettes",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "temperature_zone_c",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "temperature_zone_c",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "dlc_date",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "dlc_date",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "dluo_date",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "dluo_date",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "numero_lot_wms",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "numero_lot_wms",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "sap_lot_reference",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "sap_lot_reference",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "date_mouvement",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "date_mouvement",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "heure_mouvement",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "heure_mouvement",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "operateur_wms",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "operateur_wms",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "valeur_stock_eur",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "valeur_stock_eur",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "statut_controle_qualite",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "statut_controle_qualite",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "observations",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "observations",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Bronze_erp_stocks_logistique_txt",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlTable_Silver",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema_name": "silver",
+							"table_name": "erp_stocks_logistique"
+						}
 					}
 				]
 			}
