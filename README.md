@@ -38,7 +38,7 @@ Les données proviennent de **5 sites de production** (Pays de la Loire / Bretag
 ## 🏗️ Architecture globale
 
 <p align="center">
-  <img src="Architecture_Médaillon.png" width="70"/>
+  <img src="Architecture_Médaillon.png" width="1000"/>
 </p>
  
 
