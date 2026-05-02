@@ -38,52 +38,10 @@ Les données proviennent de **5 sites de production** (Pays de la Loire / Bretag
 ## 🏗️ Architecture globale
 
 <p align="center">
-  <img src="Architecture_Médaillon.png" width="700"/>
+  <img src="Architecture_Médaillon.png" width="70"/>
 </p>
  
-```
-┌──────────────────────────────────────────────────────┐
-│  SOURCES HÉTÉROGÈNES                                 │
-│  CRM → CSV / JSON    ERP SAP → Parquet / TXT         │
-│  SCADA (capteurs IoT) → JSON temps réel              │
-└───────────────────────┬──────────────────────────────┘
-                        │
-                        ▼
-          ┌─────────────────────────┐
-          │  Azure Data Factory     │
-          │  Orchestration ETL/ELT  │
-          │  Trigger quotidien 06h  │
-          └────────────┬────────────┘
-                       │
-          ┌────────────▼────────────┐
-          │  🥉 BRONZE LAYER        │
-          │  Azure Data Lake        │
-          │  Données brutes horod.  │
-          └────────────┬────────────┘
-                       │
-          ┌────────────▼────────────┐
-          │  🥈 SILVER LAYER        │
-          │  Azure SQL Server       │
-          │  Nettoyage · Qualité    │
-          │  Table quarantine       │
-          └────────────┬────────────┘
-                       │
-          ┌────────────▼────────────┐
-          │  🥇 GOLD LAYER          │
-          │  Data Warehouse         │
-          │  Star Schema            │
-          │  Fact + Dimensions      │
-          └────────────┬────────────┘
-                       │
-          ┌────────────▼────────────┐
-          │  CONSOMMATION           │
-          │  Power BI · SQL direct  │
-          │  Data Scientists / ML   │
-          └─────────────────────────┘
-```
- 
----
- 
+
 ## ⚙️ Stack technique
  
 | Composant | Outil | Usage |
